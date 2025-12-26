@@ -1,7 +1,12 @@
 [project]
 name = "tailvad"
 version = "0.1.0"
-description = "Add your description here"
+description = "TUI for Mullvad vpns on Tailscale"
 readme = "README.md"
 requires-python = ">=3.14"
-dependencies = []
+dependencies = [
+    "icecream>=2.1.8",
+    "pydantic>=2.12.5",
+    "readchar>=4.2.1",
+    "rich>=14.2.0",
+]
