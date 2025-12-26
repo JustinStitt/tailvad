@@ -213,6 +213,10 @@ class TailvadTUI:
             time.sleep(1)
 
 
-if __name__ == "__main__":
+def main() -> None:
     tui = TailvadTUI()
     tui.start_tui()
+
+
+if __name__ == "__main__":
+    main()
