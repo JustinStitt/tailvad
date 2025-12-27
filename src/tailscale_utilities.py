@@ -33,7 +33,7 @@ class ExitNodeActive(BaseModel):
         return f"✦ active exit node - {self.hostname} @ {self.visible_ip}"
 
 
-def get_tailscale_list_nodes() -> list[ExitNodeListEntry]:
+def get_tailscale_list_nodes(country_filter: str | None = None) -> list[ExitNodeListEntry]:
     """
     Example table data from $ tailscale exit-node list
             IP                  HOSTNAME                         COUNTRY            CITY                   STATUS
@@ -41,6 +41,8 @@ def get_tailscale_list_nodes() -> list[ExitNodeListEntry]:
     100.90.114.81       ar-bue-wg-001.mullvad.ts.net     Argentina          Buenos Aires           -
     """
     cmd = [TAILSCALE_BINARY, "exit-node", "list"]
+    if country_filter:
+        cmd.extend(["--filter", country_filter])
     output = check_output(cmd).decode()
 
     all_exit_nodes: list[ExitNodeListEntry] = []
